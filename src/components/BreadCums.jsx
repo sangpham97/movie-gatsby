@@ -2,7 +2,6 @@ import React from "react"
 import Breadcrumbs from "@material-ui/core/Breadcrumbs"
 import Link from "@material-ui/core/Link"
 import { makeStyles } from "@material-ui/core"
-import { useStaticQuery, graphql, navigate } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   root: {

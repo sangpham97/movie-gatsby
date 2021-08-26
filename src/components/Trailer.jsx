@@ -33,6 +33,7 @@ export default function Trailer({ trailer, engName, title }) {
         src={trailer}
         className={classes.video}
         id="trailer"
+        title="trailer movie"
       ></iframe>
     </div>
   )
