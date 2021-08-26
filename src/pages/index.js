@@ -1,29 +1,106 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Menu from "../components/Menu"
+import Carousel from "../components/Carousel"
+import { Grid } from "@material-ui/core"
+import RightList from "../components/RightList"
+import TypeMovies from "../components/TypeMovies"
+import WhatshotIcon from "@material-ui/icons/Whatshot"
+import ConfirmationNumberIcon from "@material-ui/icons/ConfirmationNumber"
+import LocalMoviesIcon from "@material-ui/icons/LocalMovies"
+import { makeStyles } from "@material-ui/core"
+import { graphql } from "gatsby"
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
+const useStyles = makeStyles(theme => ({
+  root: {
+    background: "gray",
+    padding: "0 4px",
+  },
+}))
+
+const IndexPage = ({ data }) => {
+  const newMovies = data.NewMovies.nodes
+  const seriesMovies = data.SeriesMovies.nodes
+  const cinemaMovies = data.CinemaMovies.nodes
+  console.log(data)
+  const classes = useStyles()
+  return (
+    <Layout>
+      <div className={classes.root}>
+        <Menu />
+        <Grid container spacing="1">
+          <Grid item md={8}>
+            <Carousel />
+            <TypeMovies
+              Genre="phim mới đề cử"
+              icon={<WhatshotIcon />}
+              Data={newMovies}
+            />
+            <TypeMovies
+              Genre="phim bộ mới cập nhật"
+              icon={<ConfirmationNumberIcon />}
+              Data={seriesMovies}
+            />
+            <TypeMovies
+              Genre="phim chiếu rạp"
+              icon={<LocalMoviesIcon />}
+              Data={cinemaMovies}
+            />
+          </Grid>
+          <Grid item md={4}>
+            <RightList />
+          </Grid>
+        </Grid>
+      </div>
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  {
+    NewMovies: allContentfulMovies(filter: { type: { eq: "new" } }, limit: 3) {
+      nodes {
+        engName
+        image {
+          gatsbyImageData(layout: CONSTRAINED, aspectRatio: 0.9)
+          title
+        }
+        title
+        year
+        type
+      }
+    }
+    SeriesMovies: allContentfulMovies(
+      filter: { type: { eq: "series" } }
+      limit: 3
+    ) {
+      nodes {
+        engName
+        image {
+          gatsbyImageData(layout: CONSTRAINED, aspectRatio: 0.9)
+          title
+        }
+        title
+        year
+        type
+      }
+    }
+    CinemaMovies: allContentfulMovies(
+      filter: { type: { eq: "cinema" } }
+      limit: 3
+    ) {
+      nodes {
+        engName
+        image {
+          gatsbyImageData(layout: CONSTRAINED, aspectRatio: 0.9)
+          title
+        }
+        title
+        year
+        type
+      }
+    }
+  }
+`
 
 export default IndexPage
