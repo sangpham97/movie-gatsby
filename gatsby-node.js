@@ -28,4 +28,13 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+  result.data.types.nodes.forEach(node => {
+    createPage({
+      path: `/danh-sach/${node.type}`,
+      component: path.resolve(`src/templates/template-danh-sach.jsx`),
+      context: {
+        type: node.type,
+      },
+    })
+  })
 }
