@@ -6,6 +6,7 @@ import { Grid, Link } from "@material-ui/core"
 import TypeMovie from "./TypeMovie"
 import { navigate } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
+import { useState } from "react"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,6 +40,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function TypeMovies({ Genre, Data, icon }) {
   const classes = useStyles()
+  const [Movies, setMovies] = useState([])
   const data = useStaticQuery(graphql`
     {
       allContentfulMovies {
@@ -56,18 +58,18 @@ export default function TypeMovies({ Genre, Data, icon }) {
   `)
   const allTypeMovies = data.allContentfulMovies.nodes
 
-  console.log(Data[0].type)
+  // console.log(Data[0].type)
 
-  const handleClick = (e, allTypeMovies, Data) => {
-    e.preventDefault()
-    const findMoviesAll = allTypeMovies.filter(
-      movie => movie.type === Data.type
-    )
-    console.log(findMoviesAll)
-    navigate(`/danh-sach/${findMoviesAll[0].type}`, {
-      state: { findMoviesAll },
-    })
-  }
+  // const handleClick = (e, allTypeMovies, Data) => {
+  //   e.preventDefault()
+  //   const findMoviesAll = allTypeMovies.filter(
+  //     movie => movie.type === Data.type
+  //   )
+  //   setMovies(findMoviesAll)
+  //   navigate(`/danh-sach/${Movies[0].type}`, {
+  //     state: { Movies },
+  //   })
+  // }
 
   return (
     <div className={classes.root}>
@@ -85,7 +87,7 @@ export default function TypeMovies({ Genre, Data, icon }) {
           </Link>
           <Link
             className={classes.all}
-            onClick={e => handleClick(e, allTypeMovies, Data[0])}
+            // onClick={e => handleClick(e, allTypeMovies, Data[0])}
           >
             Xem tất cả
           </Link>
