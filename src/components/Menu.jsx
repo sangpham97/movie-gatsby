@@ -11,6 +11,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     backgroundColor: "white",
     color: "purple",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
   wrapper: {
     display: "flex",

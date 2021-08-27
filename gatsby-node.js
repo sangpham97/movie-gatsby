@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
           image {
             title
           }
+          episode
         }
       }
       types: allContentfulMovies {
@@ -34,6 +35,16 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`src/templates/template-danh-sach.jsx`),
       context: {
         type: node.type,
+      },
+    })
+  })
+  result.data.items.nodes.forEach(node => {
+    createPage({
+      path: `/${node.image.title}/${node.episode}`,
+      component: path.resolve(`src/templates/template-watch-movie.jsx`),
+      context: {
+        title: node.image.title,
+        episode: node.episode,
       },
     })
   })

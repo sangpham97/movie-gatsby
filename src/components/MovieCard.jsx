@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import { Link } from "gatsby"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   card: {
     width: "100%",
     borderBottom: "1px solid #555",
@@ -21,6 +21,9 @@ const useStyles = makeStyles({
   top: {
     display: "flex",
     justifyContent: "flex-start",
+    [theme.breakpoints.down("sm")]: {
+      display: "block",
+    },
   },
   title: {
     textTransform: "capitalize",
@@ -30,13 +33,16 @@ const useStyles = makeStyles({
   star: {
     color: "orange",
     margin: "3px 0",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.7rem",
+    },
   },
   view: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
   },
-})
+}))
 
 export default function MovieCard({ movie, index }) {
   const classes = useStyles()

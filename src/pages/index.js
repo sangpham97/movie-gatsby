@@ -1,7 +1,6 @@
 import * as React from "react"
 import Layout from "../components/layout"
 import Menu from "../components/Menu"
-import Carousel from "../components/Carousel"
 import { Grid } from "@material-ui/core"
 import RightList from "../components/RightList"
 import TypeMovies from "../components/TypeMovies"
@@ -10,6 +9,7 @@ import ConfirmationNumberIcon from "@material-ui/icons/ConfirmationNumber"
 import LocalMoviesIcon from "@material-ui/icons/LocalMovies"
 import { makeStyles } from "@material-ui/core"
 import { graphql } from "gatsby"
+import CarouselImage from "../components/Carousel"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,8 +29,8 @@ const IndexPage = ({ data }) => {
       <div className={classes.root}>
         <Menu />
         <Grid container spacing="1">
-          <Grid item md={8}>
-            <Carousel />
+          <Grid item md={8} sm={12}>
+            <CarouselImage />
             <TypeMovies
               Genre="phim mới đề cử"
               icon={<WhatshotIcon />}
@@ -47,7 +47,7 @@ const IndexPage = ({ data }) => {
               Data={cinemaMovies}
             />
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sm={12} xs={12}>
             <RightList />
           </Grid>
         </Grid>

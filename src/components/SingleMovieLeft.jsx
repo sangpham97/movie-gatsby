@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core"
 import { GatsbyImage } from "gatsby-plugin-image"
 import GradeIcon from "@material-ui/icons/Grade"
+import { Link } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -85,6 +86,7 @@ export default function SingleMovieLeft({
   year,
   rating,
   image,
+  Image,
   country,
 }) {
   const classes = useStyles()
@@ -93,10 +95,11 @@ export default function SingleMovieLeft({
   for (let i = 0; i < star; i++) {
     stars.push(i)
   }
+  console.log(image)
   return (
     <Card className={classes.card}>
       <ImageListItem className={classes.wrapper}>
-        <GatsbyImage image={image} className={classes.media} />
+        <GatsbyImage image={Image} className={classes.media} />
         <ImageListItemBar
           className={classes.buttons}
           actionIcon={
@@ -118,7 +121,12 @@ export default function SingleMovieLeft({
                   color="secondary"
                   className={classes.button2}
                 >
-                  Xem Phim
+                  <Link
+                    to={`/${image.title}/${episode}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    Xem Phim
+                  </Link>
                 </Button>
               </IconButton>
             </>

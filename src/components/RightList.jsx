@@ -1,20 +1,29 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
-// import { movieRight } from "../utils/utils"
 import { useStaticQuery, graphql } from "gatsby"
 import MovieCard from "./MovieCard"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     marginTop: 10,
   },
-})
+  title: {
+    textTransform: "capitalize",
+    textAlign: "center",
+    color: "orange",
+    background: "black",
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "start",
+    },
+    width: "100%",
+  },
+}))
 
 export default function RightList() {
   const data = useStaticQuery(graphql`
     {
-      allContentfulMovies {
+      allContentfulMovies(sort: { order: DESC, fields: views }) {
         nodes {
           image {
             gatsbyImageData(layout: FIXED, height: 150, width: 120)
@@ -33,20 +42,14 @@ export default function RightList() {
 
   return (
     <div className={classes.root}>
-      <Typography
-        variant="h5"
-        style={{
-          textTransform: "capitalize",
-          textAlign: "center",
-          color: "orange",
-          background: "black",
-        }}
-      >
+      <Typography variant="h5" className={classes.title}>
         phim xem nhiều
       </Typography>
-      {movies.map((movie, index) => (
-        <MovieCard movie={movie} index={index} />
-      ))}
+      <span className={classes.rightList}>
+        {movies.map((movie, index) => (
+          <MovieCard movie={movie} index={index} />
+        ))}
+      </span>
     </div>
   )
 }

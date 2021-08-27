@@ -28,7 +28,7 @@ const SinglePage = ({ data }) => {
         <Grid container spacing="1">
           <Grid item md={8}>
             <BreadCum category={movie.category} />
-            <SingleMovieLeft {...movie} image={image} />
+            <SingleMovieLeft {...movie} Image={image} />
             <MovieDesc desc={movie.desc.desc} image={image} />
             <Trailer
               trailer={movie.trailer}
@@ -36,7 +36,7 @@ const SinglePage = ({ data }) => {
               title={movie.title}
             />
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} sm={12} xs={12}>
             <RightList />
           </Grid>
         </Grid>
