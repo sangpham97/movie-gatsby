@@ -1,10 +1,10 @@
-import { Link } from "gatsby"
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
+import { Typography } from "@material-ui/core"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
       >
         <main>{children}</main>
         <footer>
-          <Link to="SinglePage">Vào đây</Link>
+          <Typography variant="h5">Design By Sang</Typography>
         </footer>
       </div>
     </>
