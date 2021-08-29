@@ -12,7 +12,10 @@ import { Link } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   card: {
-    margin: theme.spacing(1, 0),
+    margin: theme.spacing(2, 0),
+    [theme.breakpoints.down("sm")]: {
+      height: "100%",
+    },
     height: "90%",
     position: "relative",
     textDecoration: "none",

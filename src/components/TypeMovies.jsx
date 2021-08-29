@@ -26,10 +26,16 @@ const useStyles = makeStyles(theme => ({
   genreWrapper: {
     display: "flex",
     justifyContent: "flex-start",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.8rem",
+    },
   },
   all: {
     color: "yellow",
     cursor: "pointer",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.8rem",
+    },
   },
   card: {
     margin: theme.spacing(1, 0),

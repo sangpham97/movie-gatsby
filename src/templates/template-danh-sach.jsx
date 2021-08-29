@@ -10,7 +10,7 @@ export default function AllTypeMovie({ location, data }) {
 
   const movies = data.allContentfulMovies.nodes
   const TypeMovies = movies.filter(movie => movie.type === type)
-  console.log(TypeMovies)
+
   return (
     <Layout>
       <Menu />

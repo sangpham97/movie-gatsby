@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     background: "gray",
     padding: "0 4px",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: theme.spacing(3),
+    },
   },
 }))
 
@@ -29,7 +32,7 @@ const IndexPage = ({ data }) => {
       <div className={classes.root}>
         <Menu />
         <Grid container spacing="1">
-          <Grid item md={8} sm={12}>
+          <Grid item md={8} sm={12} xs={12}>
             <CarouselImage />
             <TypeMovies
               Genre="phim mới đề cử"

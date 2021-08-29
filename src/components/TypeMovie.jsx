@@ -13,6 +13,10 @@ const useStyles = makeStyles(theme => ({
   card: {
     margin: theme.spacing(1, 0),
     height: "90%",
+    [theme.breakpoints.down("md")]: {
+      height: "100%",
+      margin: "3px 0",
+    },
   },
 }))
 
@@ -21,7 +25,7 @@ export default function TypeMovie({ item, index }) {
   const Image = getImage(item.image)
 
   return (
-    <Grid item md={4} sm={6} xs={6} key={index}>
+    <Grid item md={4} sm={4} xs={6} key={index}>
       <Link to={item.image.title} style={{ textDecoration: "none" }}>
         <Card className={classes.card}>
           <GatsbyImage image={Image} />

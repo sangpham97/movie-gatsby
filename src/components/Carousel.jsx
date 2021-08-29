@@ -6,13 +6,13 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(1),
+    marginTop: 10,
     position: "relative",
   },
-
   img: {
     height: 400,
     width: "100%",
+    borderRadius: 3,
   },
   buttons: {
     position: "absolute",
@@ -26,7 +26,7 @@ export default function CarouselImage() {
       allContentfulMovies {
         nodes {
           image {
-            gatsbyImageData(layout: FULL_WIDTH)
+            gatsbyImageData(layout: CONSTRAINED)
           }
           engName
         }
