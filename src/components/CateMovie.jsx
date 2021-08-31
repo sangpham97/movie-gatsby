@@ -20,11 +20,6 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
     textDecoration: "none",
   },
-  // star: {
-  //   position: "absolute",
-  //   bottom: 0,
-  //   marginTop: 3,
-  // },
 }))
 
 export default function CateMovie({ movie }) {
