@@ -30,7 +30,10 @@ export default function CarouselImage() {
   const classes = useStyles()
   const data = useStaticQuery(graphql`
     {
-      allContentfulMovies {
+      allContentfulMovies(
+        sort: { order: DESC, fields: image___createdAt }
+        limit: 6
+      ) {
         nodes {
           image {
             gatsbyImageData(layout: CONSTRAINED)

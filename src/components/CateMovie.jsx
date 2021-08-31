@@ -30,7 +30,7 @@ export default function CateMovie({ movie }) {
     stars.push(i)
   }
   return (
-    <Grid item md={3}>
+    <Grid item md={3} sm={6} xs={6}>
       <Card className={classes.card}>
         <Link
           to={`/${movie.image.title}`}

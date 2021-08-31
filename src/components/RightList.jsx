@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 export default function RightList() {
   const data = useStaticQuery(graphql`
     {
-      allContentfulMovies(sort: { order: DESC, fields: views }) {
+      allContentfulMovies(sort: { order: DESC, fields: views }, limit: 6) {
         nodes {
           image {
             gatsbyImageData(layout: FIXED, height: 150, width: 120)
