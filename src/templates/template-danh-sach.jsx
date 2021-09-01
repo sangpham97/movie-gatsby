@@ -2,8 +2,8 @@ import { Grid, Paper } from "@material-ui/core"
 import React from "react"
 import CateMovie from "../components/CateMovie"
 import Layout from "../components/layout"
-import Menu from "../components/Menu"
 import { graphql } from "gatsby"
+import MenuMovie from "../components/Menu"
 
 export default function AllTypeMovie({ data }) {
   const movies = data.allContentfulMovies.nodes
@@ -11,7 +11,7 @@ export default function AllTypeMovie({ data }) {
 
   return (
     <Layout>
-      <Menu />
+      <MenuMovie />
       <div style={{ marginTop: "20px" }}>
         <Paper
           style={{

@@ -1,6 +1,5 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import Menu from "../components/Menu"
 import { Grid } from "@material-ui/core"
 import RightList from "../components/RightList"
 import TypeMovies from "../components/TypeMovies"
@@ -10,6 +9,7 @@ import LocalMoviesIcon from "@material-ui/icons/LocalMovies"
 import { makeStyles } from "@material-ui/core"
 import { graphql } from "gatsby"
 import CarouselImage from "../components/Carousel"
+import MenuMovie from "../components/Menu"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,7 +30,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <div className={classes.root}>
-        <Menu />
+        <MenuMovie />
         <Grid container spacing="1">
           <Grid item md={8} sm={12} xs={12}>
             <CarouselImage />
