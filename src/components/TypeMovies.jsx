@@ -48,7 +48,7 @@ export default function TypeMovies({ Genre, Data, icon }) {
   const handleClick = (e, Data) => {
     e.preventDefault()
     const type = Data.type
-    navigate(`/danh-sach/${type}`, { state: { type } })
+    navigate(`/danh-sach/${type}`)
   }
   return (
     <div className={classes.root}>

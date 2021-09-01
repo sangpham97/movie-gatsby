@@ -5,11 +5,9 @@ import Layout from "../components/layout"
 import Menu from "../components/Menu"
 import { graphql } from "gatsby"
 
-export default function AllTypeMovie({ location, data }) {
-  const type = typeof window !== `undefined` ? location.state.type : null
-
+export default function AllTypeMovie({ data }) {
   const movies = data.allContentfulMovies.nodes
-  const TypeMovies = movies.filter(movie => movie.type === type)
+  const type = movies[0].type
 
   return (
     <Layout>
@@ -30,7 +28,7 @@ export default function AllTypeMovie({ location, data }) {
             : "Danh sách phim Mới"}
         </Paper>
         <Grid container spacing="2">
-          {TypeMovies.map((movie, index) => {
+          {movies.map((movie, index) => {
             return <CateMovie movie={movie} key={index} />
           })}
         </Grid>
@@ -40,16 +38,16 @@ export default function AllTypeMovie({ location, data }) {
 }
 
 export const query = graphql`
-  {
-    allContentfulMovies {
+  query GetType($type: String) {
+    allContentfulMovies(filter: { type: { eq: $type } }) {
       nodes {
         engName
+        title
+        year
         image {
           gatsbyImageData(layout: CONSTRAINED, aspectRatio: 0.9)
           title
         }
-        title
-        year
         type
       }
     }
